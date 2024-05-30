@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myAPP">
+  <head>
+    <title>My First Angular HTML Woocommerce</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <style>
+      .max_width30 {max-width: 30% !important;}
+      .max_width200px {max-width: 200px !important;}
+      .w25 {min-width: 25% !important; width:25% !important; max-width: 25% !important; }
+      .w200px {min-width: 150px !important; width:150px% !important; max-width: 150px !important; }
+      .bg_chartreusel {background: #7fff0096 !important;}
+      .bg_khaki {background: khaki !important;}
+      .text_black {color: black !important;}
+      .mnw_mxcontent {min-width: max-content !important;}
+      
+    </style>
+    <script>
+    const app = angular.module('myAPP', []);
+    app.controller('bodyController', function($scope, $rootScope) {
+        // Set a global variable on $rootScope
+        $rootScope.bcountry1 = 'test';
+        $rootScope.data = {
+            regions: [
+              {
+                  name: 'europe',
+                  bs: {
+                      'cont': 'bg-primary text-white',
+                      'label': 'text-white',
+                      'select': 'bg-white text-dark border border-success'
+                    },
+                  displayName: 'Europe',
+                  countries: [{
+                          name: 'germany',
+                          displayName: 'Germany',
+                          language: 'german',
+                          displayLanguage: 'German'
+                      },
+                      {
+                          name: 'great_britain',
+                          displayName: 'Great Britain',
+                          language: 'english',
+                          displayLanguage: 'English'
+                      },
+                      {
+                          name: 'italy',
+                          displayName: 'Italy',
+                          language: 'italian',
+                          displayLanguage: 'Italian'
+                      },
+                  ],
+              }, {
+                  name: 'asia',
+                  displayName: 'Asia',
+                  bs: {
+                      'cont': 'bg-success text-white',
+                      'label': 'text-white',
+                      'select': 'bg_chartreusel text_black border border-white'
+                  },
+                  countries: [{
+                          name: 'uae',
+                          displayName: 'United Arab Emirates',
+                          language: 'arabic',
+                          displayLanguage: 'Arabic'
+                      },
+                      {
+                          name: 'china',
+                          displayName: 'China',
+                          language: 'chinese',
+                          displayLanguage: 'Chinese'
+                      },
+                      {
+                          name: 'saudi',
+                          displayName: 'Saudi',
+                          language: 'khalegy',
+                          displayLanguage: 'Khalegy'
+                      },
+                  ],
+              }, {
+                  name: 'africa',
+                  displayName: 'Africa',
+                  bs: {
+                      'cont': 'bg-warning text-dark',
+                      'label': 'text-dark',
+                      'select': 'bg_khaki text-dark border border-dark'
+                  },
+                  countries: [{
+                          name: 'egypt',
+                          displayName: 'Egypt',
+                          language: 'arabic',
+                          displayLanguage: 'Arabic'
+                      },
+                      {
+                          name: 'south_africa',
+                          displayName: 'South africa',
+                          language: 'english',
+                          displayLanguage: 'English'
+                      },
+                      {
+                          name: 'morocco',
+                          displayName: 'Morocco',
+                          language: 'arabic',
+                          displayLanguage: 'Arabic'
+                      },
+                  ],
+              }
+                ],
+            products: []
+        };
+
+                        console.log($rootScope, $scope);
+        });
+    </script>
+  </head>
+  <body ng-controller="bodyController" >
+    <div class="container-fluid bg-primary p-3 text-white">
+      <h3 class="text-center">First Angular HTML Woocommerce</h3>
+      <p style="font-size:0.725rem;" class="text-secondary bg-white p-2"> This Angular APP provide all data to process physical buying products and manage shipping also and validate data so always right data sent with not js like africa egypt currency price will be egyption pound</p>
+    </div>
+
+    <!-- countries -->
+    <div class="container p-2" >
+
+      <!-- setup and global html variables step -->
+      <!-- repeat next update to create select from !jinja2 list $scope.list1 = [{},{}] note also $root.country valid-->
+      <div class="container text-center bg-light shadow p-3 mb-4">
+          <!-- ajax data -->
+          <input type="hidden" name="country" value="{{country}}" readonly />
+          
+<div class="text-center d-flex justify-content-center align-items-stretch p-3">
+          <label for="region" class="mnw_mxcontent mr-2 badge badge-primary  p-2 d-flex justify-content-center align-item-center">Select Region:</label>
+          <select id="region" type="text" ng-model="region" class="form-control bg-light text-secondary text-center">
+            <option value="" hidden>select region</option>
+            <option value="europe">Europe</option>
+            <option value="asia">Asia</option>
+            <option value="africa">Africa</option>
+          </select>
+</div>
+      </div>
+ <div ng-if="region" id="main_data" class="container p-3 shadow">
+    <h4 class="text-center badge badge-light shadow p-3 text-center mb-3">{{region.toUpperCase()}}</h4>
+    
+    <!-- countries start -->
+    <div id="countries_cont">
+      <div ng-repeat="obj in data.regions" ng-if="region == obj.name" class="{{obj.bs.cont}} p-3 d-flex justify-content-start align-items-center">
+          <label for="country" class="mr-2 w200px p-1 {{obj.bs.label}}">{{obj.displayName}}'s Country:</label>
+          <select class="form-control max_width200px {{obj.bs.select}}" ng-model="country" id="country1" x='{{$root.country = country}}'>
+              <option value="" selected disabled hidden>select country</option>
+              <option value="germany">Germany</option>
+              <option value="great_britain">Great Britain</option>
+              <option value="italy">Italy</option>
+          </select>
+      </div>
+    </div>
+    <!-- countries end -->
+
+    <!-- languge -->
+    <div id="languges_container" ng-if="country">
+        <!-- EU West Kuwaiti Dinar-->
+        <div id="eu_west_container">
+            <div ng-if="region == 'europe'" ng-modal='language' class="d-flex justify-content-start align-items-center">
+                <label for="languge" class="mr-2 w25 bg-primary text-white p-1">Language:</label>
+                <input class="form-control max_width30" type="text" value="{{$root.country}}" readonly />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="main_data" ng-if="region">
+    <div ng-if="language == 'german'">
+        <!-- currency -->
+        <div ng-if='!price'>
+            <h5>Please select Your Currency to prcoess</h5>
+            <select ng-modal="currency">
+                <option value="" selected hidden disabled>select your {{region}} Currency</option>
+                <option value="euro">Euro</option>
+                <option value="dollar">Dollar</option>
+            </select>
+        </div>
+        <!-- games to buy -->
+        <select title="this games transported by us in germany select which to buy" ng-model="game">
+            <option value="" selected hidden disabled>select your {{language}} Game</option>
+            <option value="lol">League of Legends</option>
+            <option value="mbw">Mount & Blade: Warband</option>
+            <option value="apti">A Plague Tale: Innocence</option>
+        </select>
+    </div>
+    <!-- display final prices and input them for backend if form submited with game_price -->
+    <div id="game_price" ng-if="currency && game">
+        <input type="hidden" ng-init="gameName =
+                (game == 'lol') ? 'League of Legends' :
+                (game == 'mbw') ? 'Mount & Blade: Warband' : 
+                (game == 'apti') ? 'A Plague Tale: Innocence' : '' " readonly />
+        <input type="hidden" ng-init="gamePrice =
+                (game == 'lol') ? '101':
+                (game == 'mbw') ? '99': 
+                (game == 'apti') ? '33' : '' " readonly />
+        <input type="hidden" ng-init="currencyShort =
+                (currency == 'euro') ? 'E' :
+                (currency == 'dollar') ? '$' : ''" readonly />
+        <h4 for="{{region}}_{{game}}" ng-bind="gameName"></h4>
+        <input id="price_{{region}}_{{game}}" name="item_price" value="{{gamePrice}}" readonly hidden>
+        <input id="currency_{{region}}_{{game}}" name="item_currency" value="{{currencyShort}}" readonly hidden>
+        <h5 ng-if="region && country && gameName && gamePrice && currencyShort && currencyShort && currency">Price of {{gameName}} is {{gamePrice}}{{currencyShort}} in {{currency}}</h5>
+    </div>
+</div>
+      
+    </div>
+    
+
+    
+  </body>
+</html>
