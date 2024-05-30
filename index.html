@@ -18,7 +18,7 @@
       .bg_khaki {background: khaki !important;}
       .text_black {color: black !important;}
       .mnw_mxcontent {min-width: max-content !important;}
-      
+      .main_bshadow {box-shadow: 0 4px 8px 0 rgba(240, 240, 230, 0.2), 0 6px 20px 0 rgba(250, 200, 80, 0.15);}
     </style>
     <script>
     const app = angular.module('myAPP', []);
@@ -119,9 +119,10 @@
   </head>
   <body ng-controller="bodyController" >
     <div class="container-fluid bg-primary p-3 text-white">
-      <h3 class="text-center">First Angular HTML Woocommerce</h3>
-      <p style="font-size:0.725rem;" class="text-secondary bg-white p-2"> This Angular APP provide all data to process physical buying products and manage shipping also and validate data so always right data sent with not js like africa egypt currency price will be egyption pound</p>
+      <h3 class="text-center">First Angular Multi Region Seller</h3>
+      <p style="font-size:0.725rem;" class="text-secondary bg-white p-2"> This Angular process all multi region seller in one page app based on strong database shecma and external payment API's included to process payment secure within single page, no login required to buy or check process also this for pyshical multi proudct sellers that sent to country</p>
     </div>
+    
 
     <!-- countries -->
     <div class="container p-2" >
@@ -143,7 +144,9 @@
 </div>
       </div>
  <div ng-if="region" id="main_data" class="container p-3 shadow">
-    <h4 class="text-center badge badge-light shadow p-3 text-center mb-3">{{region.toUpperCase()}}</h4>
+    <div class="text-center mb-3">
+    <h4 class="text-center badge badge-light main_bshadow p-3 text-center">{{region.toUpperCase()}}</h4>
+    </div>
     
     <!-- countries start -->
     <div id="countries_cont">
@@ -214,6 +217,10 @@
     </div>
     
 
-    
+    <!-- next update !img will be replace of language static by global root.country update outside if scoope, 
+       note declered variables or models inside ng-if directive will not access outside ng-if elmenet container so we can use global variable declared
+       and dummy data attr that bind value of ng-model inside ng-if to the global variable like ng-if="otherval" ng-model="country" x="$root.country = country"
+      here $root.country is the global variable we can name any name else but this easy for code access
+       -->
   </body>
-</html>
+</html> 
