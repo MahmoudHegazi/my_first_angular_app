@@ -1,6 +1,8 @@
 # my first angular 5/30/2024
 
 
+![image](https://github.com/MahmoudHegazi/my_first_angular_app/assets/55125302/111a1b3e-14cf-4b39-81a5-d901bfb8ed8a)
+
 # what if i asked to create framework like angular what would be like
 also this displays how i see angular and how it works plain, note the script is shortest and not valid js it js plain of all steps to do action fast shortelized
 ```javascript
