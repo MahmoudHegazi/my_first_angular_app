@@ -27,8 +27,11 @@ also this displays how i see angular and how it works plain, note the script is 
       
     });
     $("[pk-if]").remove(); // here not angular full reupdate
+      viewModels[model].forEach((elmWillAddedToView)=>elmWillAddedToView.parent.append(elmWillAddedToView.elm));
     }
-    viewModels[model].forEach((elmWillAddedToView)=>elmWillAddedToView.parent.append(elmWillAddedToView.elm));
-this simple full update framework angular mentioned partialy update based on model changed not delete all model elms with if in pk-if example
+
+    //this simple full update framework angular mentioned partialy update based on model changed not delete all model elms with if in pk-if example
+    updateView();
+    
 
 ```
