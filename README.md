@@ -4,6 +4,8 @@
 ![image](https://github.com/MahmoudHegazi/my_first_angular_app/assets/55125302/111a1b3e-14cf-4b39-81a5-d901bfb8ed8a)
 
 
+![image](https://github.com/MahmoudHegazi/my_first_angular_app/assets/55125302/a4bd120e-f155-417b-ab6c-7a17754d5961)
+
 ![image](https://github.com/MahmoudHegazi/my_first_angular_app/assets/55125302/101ac306-5b9f-4b3f-b8a0-d063e1311e51)
 
 # what if i asked to create framework like angular what would be like
