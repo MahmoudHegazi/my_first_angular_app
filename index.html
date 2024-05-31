@@ -25,6 +25,7 @@
     app.controller('bodyController', function($scope, $rootScope) {
         // Set a global variable on $rootScope
         $rootScope.bcountry1 = 'test';
+        $rootScope.selectedCategory = '';
         $rootScope.data = {
             regions: [
               {
@@ -35,23 +36,23 @@
                       'select': 'bg-white text-dark border border-success'
                     },
                   displayName: 'Europe',
-                  countries: [{
+                  countries: [{	
                           name: 'germany',
                           displayName: 'Germany',
-                          language: 'german',
-                          displayLanguage: 'German'
+                          currency: 'Euro',
+                          currency_short: 'EUR'
                       },
                       {
                           name: 'great_britain',
                           displayName: 'Great Britain',
-                          language: 'english',
-                          displayLanguage: 'English'
+                          currency: 'Pound sterling',
+                          currency_short: 'GBP'
                       },
                       {
                           name: 'italy',
                           displayName: 'Italy',
-                          language: 'italian',
-                          displayLanguage: 'Italian'
+                          currency: 'euro',
+                          currency_short: 'E'
                       },
                   ],
               }, {
@@ -65,20 +66,20 @@
                   countries: [{
                           name: 'uae',
                           displayName: 'United Arab Emirates',
-                          language: 'arabic',
-                          displayLanguage: 'Arabic'
+                          currency: 'Drhim Yuan',
+                          currency_short: 'EGP'
                       },
                       {
                           name: 'china',
                           displayName: 'China',
-                          language: 'chinese',
-                          displayLanguage: 'Chinese'
+                          currency: 'Chinese yuan',
+                          currency_short: 'CNY'
                       },
                       {
                           name: 'saudi',
                           displayName: 'Saudi',
-                          language: 'khalegy',
-                          displayLanguage: 'Khalegy'
+                          currency: 'Saudi Arabian Riyal',
+                          currency_short: 'SAR'
                       },
                   ],
               }, {
@@ -93,24 +94,104 @@
                           name: 'egypt',
                           displayName: 'Egypt',
                           language: 'arabic',
-                          displayLanguage: 'Arabic'
+                          displayLanguage: 'Arabic',
+                          currency: 'Egypt Pound',
+                          currency_short: 'EGP'
                       },
                       {
                           name: 'south_africa',
                           displayName: 'South africa',
-                          language: 'english',
-                          displayLanguage: 'English'
+                          currency: 'South African rand',
+                          currency_short: 'ZAR'
                       },
                       {
-                          name: 'morocco',
-                          displayName: 'Morocco',
-                          language: 'arabic',
-                          displayLanguage: 'Arabic'
+                          name: 'tunisia',
+                          displayName: 'Tunisia',
+                          currency: 'Tunisian dinar',
+                          currency_short: 'DT'
                       },
                   ],
               }
                 ],
-            products: []
+            productsData: [
+                 {
+                    name: 'online_games',
+                    displayName: 'Online Games',
+                    type: 'category_section',
+                    products: [
+                      {
+                        name: 'lol', 
+                        displayName: 'League of Legends',
+                        type: 'product',
+                        description: 'League of legends game sent with licence and 2 skins.',
+                        sellerName: 'Riot games2',
+                        seller_id: 1002,
+                        price: '101.00'
+                      },
+                      {
+                        name: 'mbw', 
+                        displayName: 'Mount & Blade: Warband',
+                        type: 'product',
+                        description: 'Mount & Blade: Warband game sent with licence only',
+                        sellerName: 'Super Seller',
+                        seller_id: 7,
+                        price: '47.49'
+                      },
+                      {
+                        name: 'apti', 
+                        displayName: 'A Plague Tale: Innocence',
+                        type: 'product',
+                        description: 'A Plague Tale: Innocence game sent with 2 licences',
+                        sellerName: 'Auto Seller',
+                        seller_id: 13,
+                        price: '33.99'
+                      }
+                    ]
+                  },
+              {
+                name: 'applications',
+                displayName: 'Applications',
+                type: 'category',
+                sections: [
+
+                  {
+                    name: 'web_apps',
+                    displayName: 'Web Applications',
+                    type: 'category_section',
+                    products: [
+                      {
+                        name: 'scrape_script', 
+                        displayName: 'Auto Scraper',
+                        description: 'this scraper scrape google public search results, without error',
+                        sellerName: 'Auto Developer',
+                        seller_id: 12,
+                        type: 'product',
+                        price: '50.00'
+                      },
+                      {
+                        name: 'auto_tester', 
+                        displayName: 'Auto Tester',
+                        description: 'this dynamic test create application, it provide you with tool that create test script it can generate unit test steps or selenuim steps or both, how it works create new test, configure the tool will be used test type unit test or multiple unit test based or selenuim test or requests and bs4 tests then start add test steps, steps can be findElm, getElmData, clickElmenet, scrollPage 1orinfinity with stopper, getText, confirmText, add assert for variables gotten by steps of the test you create, and new actions, final result is valid python code test app that do your test target, also you can create SQL database in configuration step or access apis within test also if for example multiple sites test would be nice, this app help you as not developer create test for there website or apps',
+                        sellerName: 'Auto Developer',
+                        seller_id: 12,
+                        
+                        type: 'product',
+                        price: '2100.00'
+                      },
+                      {
+                        name: 'pdf_press', 
+                        displayName: 'PDF Press',
+                        sellerName: 'Python King',
+                        description: 'simple app to create dynamic pdf that allow you to create pages, inside pages sections each section can contains unlimited components, note that if components larger than page height the will down to new page automatic, components can be titles containers, h1-h6, parghraphes p, span, em, b, url, image, table, numeric list, un numeric list, read excel tool that take excel convert to table and insert into your pdf as table component make sure provide not many columns to fit pdf, background image to container or page, you can use custom tool to generate google map image component for your pdfs ex add marker in speacfic place on map and take image then add in pdf this tool allow to do that but you need get your own google API keys and use it unlimited in the app, with all styling possible features to position elements in the dynamic pdf created, no templates you create your own pdf easy and desgin it as you need with drag and drop and other styling options, final result pdf file to view or download or save it for later use or update.',
+                        seller_id: 1,
+                        type: 'product',
+                        price: '3099.00'
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
         };
 
                         console.log($rootScope, $scope);
@@ -132,16 +213,27 @@
       <div class="container text-center bg-light shadow p-3 mb-4">
           <!-- ajax data -->
           <input type="hidden" name="country" value="{{country}}" readonly />
-          
+          <input type="hidden" name="category" value="{{selectedCategory}}" readonly />
+
 <div class="text-center d-flex justify-content-center align-items-stretch p-3">
-          <label for="region" class="mnw_mxcontent mr-2 badge badge-primary  p-2 d-flex justify-content-center align-item-center">Select Region:</label>
+          <label for="region" class="mnw_mxcontent w200px mr-2 badge badge-primary  p-2 pr-3 d-flex justify-content-center align-item-center">Select Region:</label>
           <select id="region" type="text" ng-model="region" class="form-control bg-light text-secondary text-center">
             <option value="" hidden>select region</option>
             <option value="europe">Europe</option>
             <option value="asia">Asia</option>
             <option value="africa">Africa</option>
           </select>
-</div>
+      </div>
+      <div ng-if='region'>
+           <div class="text-center d-flex justify-content-center align-items-stretch p-3">
+                   <label for="currency" class="mnw_mxcontent w200px p-2 mr-2 badge badge-primary d-flex justify-content-center align-item-center">Select Currency:</label>
+                   <select class="form-control bg-light text-secondary text-center" ng-modal="currency" id="currency" name="currency">
+                       <option value="" selected hidden disabled>Select Currency</option>
+                       <option value="euro">Euro</option>
+                       <option value="dollar">Dollar</option>
+                   </select>
+           </div>
+      </div>
       </div>
  <div ng-if="region" id="main_data" class="container p-3 shadow">
     <div class="text-center mb-3">
@@ -154,40 +246,33 @@
           <label for="country" class="mr-2 w200px p-1 {{obj.bs.label}}">{{obj.displayName}}'s Country:</label>
           <select class="form-control max_width200px {{obj.bs.select}}" ng-model="country" id="country1" x='{{$root.country = country}}'>
               <option value="" selected disabled hidden>select country</option>
-              <option value="germany">Germany</option>
-              <option value="great_britain">Great Britain</option>
-              <option value="italy">Italy</option>
+              <option value="country.name" ng-repeat="country in obj.countries" title="people lives in {{country.name}} speaks {{country.language}} language.">{{country.displayName}}</option>
           </select>
       </div>
     </div>
     <!-- countries end -->
 
-    <!-- languge -->
-    <div id="languges_container" ng-if="country">
-        <!-- EU West Kuwaiti Dinar-->
-        <div id="eu_west_container">
-            <div ng-if="region == 'europe'" ng-modal='language' class="d-flex justify-content-start align-items-center">
-                <label for="languge" class="mr-2 w25 bg-primary text-white p-1">Language:</label>
-                <input class="form-control max_width30" type="text" value="{{$root.country}}" readonly />
-            </div>
-        </div>
-    </div>
 </div>
 
 
-<div id="main_data" ng-if="region">
-    <div ng-if="language == 'german'">
-        <!-- currency -->
-        <div ng-if='!price'>
-            <h5>Please select Your Currency to prcoess</h5>
-            <select ng-modal="currency">
-                <option value="" selected hidden disabled>select your {{region}} Currency</option>
-                <option value="euro">Euro</option>
-                <option value="dollar">Dollar</option>
-            </select>
+<div class="container" id="main_data" >
+    
+    
+    <div class="row">
+        <div class="col-sm-3 shadow mr-auto p-0 m-0">
+           <div ng-repeat="cat in data.productsData" class="container-fluid p-0 m-0">
+             <button ng-click="$root.selectedCategory = cat.name" class="btn btn-outline-light text-dark btn block w-100">{{cat.displayName}}</button>
+           </div>
         </div>
+        <!-- categories category.sections -->
+        <div class="col-sm-8 shadow">
+          {{selectedCategory}}
+        </div>
+        
+
+        
         <!-- games to buy -->
-        <select title="this games transported by us in germany select which to buy" ng-model="game">
+        <select ng-if="" title="this games transported by us in germany select which to buy" ng-model="game">
             <option value="" selected hidden disabled>select your {{language}} Game</option>
             <option value="lol">League of Legends</option>
             <option value="mbw">Mount & Blade: Warband</option>
